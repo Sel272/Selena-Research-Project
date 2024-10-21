@@ -1,0 +1,83 @@
+---
+title: "Data Gathering"
+format:
+    html:
+        code-fold: true
+---
+
+## Why is Data Gathering Important?
+
+Data gathering is a fundamental aspect of any research or analysis project. The primary purpose of collecting data is to acquire accurate and relevant information that can answer specific research questions or test hypotheses. This process enables researchers and analysts to gain insights into patterns, trends, and relationships within the subject matter. Without proper data gathering, any analysis would be based on assumptions or incomplete information, leading to potentially flawed or inconclusive results. Moreover, in fields like science, healthcare, economics, and social research, data gathering is crucial for drawing evidence-based conclusions that can inform policy, drive innovation, or guide decision-making. By carefully designing and executing the data collection process, we ensure the validity, reliability, and representativeness of the data, which are essential for the integrity and credibility of the analysis.
+
+## 1. Record Data: cardio_train.xlsx
+
+Data Description
+The dataset in focus is designed to study various features associated with the presence or absence of cardiovascular disease. These features are categorized into three main types based on their nature and source.
+
+Link to the dataset: <https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset/data>.
+
+1. Objective Features:
+These features represent factual information.
+Age: Measured in days and stored as an integer.
+Height: Measured in centimeters and stored as an integer.
+Weight: Measured in kilograms and stored as a float.
+Gender: This is a categorical code.
+
+2. Examination Features:
+These are results derived from medical examinations.
+Systolic Blood Pressure (ap_hi): An integer value representing the pressure in arteries during the contraction of the heart muscle.
+Diastolic Blood Pressure (ap_lo): An integer value representing the pressure in the arteries when the heart muscle is resting between beats.
+Cholesterol: Categorized into three levels:
+1: Normal
+2: Above Normal
+3: Well Above Normal
+Glucose (gluc): Similarly, categorized into three levels:
+1: Normal
+2: Above Normal
+3: Well Above Normal
+
+3. Subjective Features:
+These are based on information provided by the patient.
+Smoking (smoke): A binary value where 1 indicates a smoker and 0 indicates a non-smoker.
+Alcohol Intake (alco): A binary value where 1 represents consumption and 0 indicates otherwise.
+Physical Activity (active): A binary value, where 1 indicates that the patient is physically active and 0 indicates they are not.
+Target Variable:
+
+Presence or Absence of Cardiovascular Disease (cardio): This binary variable serves as the outcome of interest, where 1 indicates the presence of cardiovascular disease and 0 indicates its absence.
+All the values in this dataset were gathered at the time of the medical examination, ensuring the contemporaneity of the information.
+
+4. Dataset Dimension
+This dataset has 70,000 records with 13 variables. All 13 variables are continuous variables related to the biological features of individuals. See below tables for detailed information
+
+```{r}
+#| warning: false
+library(skimr)
+library(knitr)
+library(tidyverse)
+library("readxl")
+cardio <- read_excel('../Data/00-raw-data/cardio_train.xlsx')
+skim(cardio)
+```
+
+## 2. Text Data: News API using Python
+
+### Data Description
+In the scope of my research on cardiovascular topics, I leveraged Python to streamline the data collection and processing. Beginning with the Wikipedia-API, I queried it to obtain text data relevant to my subject. The results from this query were systematically organized into three distinct dictionaries. From these, I extracted essential textual elements, specifically the title and description.
+
+Subsequent to the extraction, I embarked on a thorough text cleaning process to ensure the data's reliability and coherence. With this cleaned dataset, I then visualized the frequency of terms by generating a word cloud. This visualization not only underscored the primary terms associated with the cardiovascular domain but also highlighted words that potentially share a relationship with my core topic. This approach allowed for an intuitive understanding of the conceptual landscape surrounding cardiovascular research.
+
+The subsequent chart illustrates the frequency with which each source was referenced in the data pull. Notably, terms such as 'risk', 'heart', 'new', and 'health' stand out. These words are particularly relevant and resonate strongly with my primary focus: cardiovascular.
+
+Link to the API code: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/DataGathering/datagatheringAPI_python.ipynb>
+
+![Word Cloud](../Image/textworldcloud.png)
+
+
+## 3. Text Data: New York Times API using R
+
+### Data Description
+Leveraging the New York Times (NYT) API with the capabilities of R programming presents a powerful resource for researchers focused on cardiovascular risk prediction. By securing an API key from the NYT Developer's portal, spotlighting "Heart" and "Disease" to find the related key words. With these articles in hand, R's comprehensive analytical toolbox facilitates profound text examination, enabling researchers to discern trends, identify patterns, and uncover pivotal insights from a globally recognized news outlet. This synergy significantly augments the depth and scope of their exploration into heart health. The following chart shows the frequency of sources for the text pulled.
+
+Link to the API code: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/DataGathering/datagatheringAPI_R.Rmd>.
+
+![Frequency](../Image/NYTAPI.png)

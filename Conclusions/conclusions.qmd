@@ -1,0 +1,61 @@
+---
+title: "Conclusions"
+---
+
+## Project Summary
+
+In this project, I engaged in several machine learning steps to address my primary data science research question. I began by defining the problem I aimed to solve: identifying the main risk factors associated with cardiovascular disease. The data was primarily sourced from the Cardiovascular Disease dataset on Kaggle, chosen for its comprehensive range of variables known to affect heart health, including objective features (age, weight, gender), examination features (systolic blood pressure, blood glucose levels), and subjective features (smoking status, alcohol intake, physical activity). This rich dataset allowed for a nuanced analysis of the interplay between various risk factors and their impact on cardiovascular health.
+
+
+## Description of the Data
+
+The [cardiovascular dataset](https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset/data) used in this research project is sourced from the Kaggle website.
+
+The original dataset comprises 70,000 data points, each with 13 variables. The target label, 'cardio,' indicates the presence of cardiovascular disease, with '1' denoting its presence and '0' indicating its absence. A ‘bmi’ variable is created additionally to capture the information for the relationship between height and weight. In terms of volume, this dataset is substantial, providing an ample amount of data for machine learning purposes. However, its size can also pose a challenge, requiring significant processing time during the training process. After addressing missing values and outliers, approximately 64,000 records remain, showcasing a near 50-50 split for the target label.
+
+## Key Results & Important Findings ✨
+
+During the machine learning processes, a total of four models were constructed: a Naive Bayes model using record data, a Naive Bayes model using text data, a decision tree model, and a random forest model. Upon testing these models with training data, the following evaluation metric results were obtained.
+
+|                   | Test Accuracy| Test Precision | Test Recall |
+|-------------------|:-------------|:---------------|:------------|
+| Record Naïve Bayes| 0.5985       | 0.6171         | 0.4624      |   
+| Text Naïve Bayes  | 0.6875       | 0.4615         | 0.5217      |
+| Decision Tree     | 0.7301       | 0.7346         | 0.7243      |   
+| Random Forest     | 0.7316       | 0.7589         | 0.6523      |
+
+The record Naive Bayes model, the Decision Tree model, and the Random Forest model are constructed using the original record data, while the text Naive Bayes model utilizes record data information combined into text strings for text data treatment. Overall, in terms of accuracy, both the Decision Tree and Random Forest outperform the Naive Bayes model. They exhibit higher precision and recall scores, indicating their superiority in this research. Thus, when similar record data is available for future patients, the Decision Tree model and the Random Forest model are the top choices. However, the Text Naive Bayes model holds an advantage in scenarios where record information isn't accessible. For instance, if all data are converted into text strings from patient forms or other sources, Text Naive Bayes could be valuable for predictions, albeit with less interpretability throughout the process.
+
+Comparing the Decision Tree model and the Random Forest model, the Decision Tree model is preferred due to its ease of interpretation. While both models perform similarly in terms of accuracy, the Decision Tree model's interpretability and communicability make it stand out. For instance, the interpretation of the leftmost node—where 'ap_hi' is less than or equal to 129.5, 'age' is less than or equal to 54.5, 'cholesterol' is less than or equal to 2.5, and 'age' is again less than or equal to 45—predicts the class as 0, indicating non-cardiovascular disease. This logic is reasonable as it suggests that younger individuals with lower levels of cholesterol and blood pressure generally have a lower risk of cardiovascular disease.
+
+The decision tree model is selected as the final model for this research project. Its tree diagram effectively communicates crucial characteristics related to cardiovascular disease to the public, aiding in prevention strategies. This model can relay important messages to patients, assisting in the proactive prevention of potential cardiovascular disease in the future.
+
+## Real World Application - "How These Findings Affect Real-life and Real people?"
+
+From this project, we've successfully pinpointed the crucial factors associated with cardiovascular disease: age, cholesterol levels, BMI, blood pressure, and glucose levels. These health metrics are widely recognized as strongly linked to cardiovascular diseases. In practical applications, we could develop a machine learning algorithm that utilizes this information to calculate an individual's cardiovascular disease risk level during health screenings. Moreover, it could pinpoint the key factors contributing to high risk based on the insights from the tree diagram. This information empowers doctors to engage in meaningful conversations with patients about improving their health based on these results.
+
+Imagine a simple phone app where users input their health metrics to receive an assessment of which indices pose a heightened risk of cardiovascular disease. The model's practicality and usability in real-life scenarios are evident. By collecting data from users, we could refine and enhance the model's accuracy, paving the way for more effective cardiovascular disease predictions in the future
+
+## Potential Issues & Future Improvements 🌟
+
+In reflecting on the project's outcomes, it is clear that while the selected models have provided valuable insights, there is room for enhancement in future iterations. One potential issue is the balance and diversity of the dataset. Although preprocessing efforts have refined the dataset, ensuring a balanced representation of various demographics can improve the model's predictive power across different population segments.
+
+Future improvements could include the integration of additional variables that may influence cardiovascular health, such as genetic factors, more detailed lifestyle choices, and socioeconomic status. Moreover, implementing more sophisticated algorithms like neural networks or ensemble methods could capture complex patterns in the data more effectively.
+
+Another avenue for improvement is the model's applicability in real-world settings. Efforts could be made to streamline the model's implementation in healthcare systems, allowing for seamless integration into existing workflows.  For instance, creating an API that healthcare providers can use to input patient data and receive risk assessments could be a practical next step.
+
+Lastly, with the rapid advancement of wearable health technology, future models could incorporate data from such devices, providing real-time monitoring and potentially more accurate risk assessments. As technologies and methods evolve, so should approaches to cardiovascular risk modeling to ensure findings remain relevant and applicable in improving patient outcomes.
+
+## Additionl Information
+
+The human heart, roughly the size of a large fist, is a tireless muscle that beats about 100,000 times daily, pumping up to 7,500 liters of blood. This blood circulation, essential for delivering oxygen and nutrients to tissues and removing wastes like carbon dioxide, relies on the collaborative work of the heart, blood, and a network of blood vessels. The heart's central location between the lungs in the chest cavity underscores its vital role in the body’s circulatory system.
+
+{{< video https://youtu.be/l6yZB4glEns aspect-ratio="4x3" >}}
+
+# References
+
+::: {#refs}
+
+- [*https://world-heart-federation.org/what-is-cvd/.*]{.class key="val"}
+
+:::

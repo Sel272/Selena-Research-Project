@@ -1,0 +1,43 @@
+project:
+  type: website
+  
+website:
+  title: "Research Project"
+  sidebar:
+    background: "#d0e7f9"
+    logo: "Image/georgetown logo.png"
+    logo-alt: "Georgetown logo."
+    search: True
+    style: "docked"
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: About/About.qmd
+        text: About Me
+      - href: Introduction/Introduction.qmd
+        text: Project Introduction
+      - href: https://github.com/Sel272/Selena-Research-Project
+        text: Code
+      - href: Data/data.qmd
+        text: Data
+      - href: DataGathering/datagathering.qmd
+        text: Data Gathering
+      - href: DataCleaning/datacleaning.qmd
+        text: Data Cleaning
+      - href: DataExploration/dataexploration.qmd
+        text: Data Exploration
+      - href: NaiveBayes/naivebayes.qmd
+        text: Naïve Bayes
+      - href: Clustering/clustering.qmd
+        text: Clustering
+      - href: DimensionalityReduction/dimensionalityreduction.qmd
+        text: Dimensionality Reduction
+      - href: DecisionTrees/decisiontrees.qmd
+        text: Decision Trees
+      - href: Conclusions/conclusions.qmd
+        text: Conclusions
+
+format:
+  html:
+    theme: cosmo
+    toc: true

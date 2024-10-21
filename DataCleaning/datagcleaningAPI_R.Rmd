@@ -1,0 +1,28 @@
+---
+title: "DSAN5000"
+author: "Selena Yang"
+date: "2023-09-25"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+df <- read_csv("../Data/00-raw-data/NewYorkTimesAPI.csv")
+```
+
+```{r}
+colnames(df)
+```
+
+
+```{r}
+df1 = subset(df, select = c(`response.docs.abstract`, `response.docs.lead_paragraph`))
+```
+
+```{r}
+write.csv(df1, file = "../Data/01-modified-data/NewYorkTimesAPI.csv", row.names = FALSE)
+```
+

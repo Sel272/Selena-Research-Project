@@ -1,0 +1,53 @@
+---
+title: "Cardio1"
+author: "Xuening Yang"
+date: '2023-09-28'
+output: html_document
+---
+
+```{r}
+library("readxl")
+library(skimr)
+```
+
+```{r}
+cardio <- read_excel("../Data/00-raw-data/cardio_train.xlsx")
+cardio$age <- round(cardio$age / 365)
+head(cardio)
+summary(cardio)
+```
+```{r}
+#Analyzing the excel File
+print(is.data.frame(cardio))
+print(ncol(cardio))
+print(nrow(cardio))
+#70000 obs, 13 variables
+```
+```{r}
+#checking for any NA value
+colSums(is.na(cardio)) #No NA
+```
+```{r}
+# Compute the correlation matrix
+cor_matrix <- cor(cardio)  # I'm using the built-in mtcars dataset as an example
+
+# Create a heatmap
+heatmap(cor_matrix, main="Correlation Heatmap", symm=TRUE, trace="none")
+```
+```{r}
+
+library(corrplot)
+
+#compute the correlation matrix
+cor_matrix <- cor(cardio)  
+#correlation plot
+corrplot(cor_matrix, method="circle")
+```
+```{r}
+write.csv(cardio, file = "../Data/01-modified-data/cardio.csv", row.names = FALSE)
+```
+
+
+
+
+

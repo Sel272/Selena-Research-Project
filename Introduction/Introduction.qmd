@@ -1,0 +1,66 @@
+---
+title: "Introduction"
+bibliography: ../references/references.bib
+---
+## What is Cardiovascular Risk and Why We Want to Analyze it? 
+Cardiovascular risk analysis is an essential component of modern healthcare and has profound consequences for individuals and society. By assessing an individual's risk factors for heart disease and related conditions, healthcare professionals can take proactive steps to prevent or mitigate these potentially life-threatening problems. This risk analysis is critical for a number of reasons.
+
+First, it can prevent cardiovascular disease and promote better health and quality of life through lifestyle changes and medication. Secondly, it can effectively allocate medical resources, focus on high-risk groups, and reduce overall medical costs. Personalized medicine makes it possible to tailor treatments to individual risk profiles, thereby increasing treatment effectiveness while minimizing side effects.
+
+On a broader scale, public health programs benefit from cardiovascular risk data to guide community-wide interventions and health education efforts. Research and development efforts benefit from a deeper understanding of the mechanisms of heart disease, leading to innovative treatment and prevention strategies. Cardiovascular risk analysis also reveals health disparities and contributes to equitable health care access and outcomes.
+
+Additionally, early detection is key as it allows for timely intervention before symptoms appear. Patient education is another important outcome, allowing individuals to make informed choices about their health. Ultimately, by analyzing and addressing cardiovascular risk factors, we can enhance individual well-being and the overall health of society.
+
+## Potential Factors 🫀
+Cardiovascular risk prediction is a critical aspect of preventing heart disease and related conditions. It involves assessing an individual's likelihood of developing cardiovascular issues, such as heart attacks or strokes, based on various risk factors. These risk factors can include age, gender, family history, smoking status, physical activity, diet, blood pressure, cholesterol levels, diabetes, and body weight.
+
+### 10 Questions:
+(@) Age: How old are you? (Cardiovascular risk generally increases with age.)
+(@) Gender: Are you male or female? (Certain risk factors may vary by gender.)
+(@) Family History: Does your family have a history of heart disease or related conditions?
+(@) Smoking: Do you currently smoke, or have you ever smoked in the past?
+(@) Physical Activity: How often do you engage in physical activity or exercise?
+(@) Diet: What is your typical diet like? (Consider factors like consumption of fruits, vegetables, and processed foods.)
+(@) Blood Pressure: What is your current blood pressure, and have you been diagnosed with hypertension (high blood pressure)?
+(@) Cholesterol Levels: Do you know your cholesterol levels, including LDL (low-density lipoprotein) and HDL (high-density lipoprotein) cholesterol?
+(@) Diabetes: Have you been diagnosed with diabetes, or do you have elevated blood sugar levels?
+(@) Weight and Body Mass Index (BMI): What is your current weight, and do you know your BMI? (Obesity is a significant cardiovascular risk factor.)
+
+::: {.callout-caution collapse="true"}
+## Unlocking Additional Factors Contributing to Cardiovascular Diseases
+
+- Mental Health: Mental health conditions, especially stress, depression, and anxiety, have been shown to affect heart health, potentially due to hormonal changes and unhealthy coping behaviors like smoking and poor diet.
+
+- Sleep Patterns: Both insufficient and excessive sleep have been associated with an increased risk of cardiovascular disease, likely related to disruptions in biological processes.
+
+- Alcohol Consumption: Moderate alcohol intake may have some protective effects on the heart, but excessive alcohol use is a risk factor for cardiovascular disease.
+
+- Environmental Factors: Exposure to pollution and living in areas with little opportunity for physical activity or access to healthy foods can increase cardiovascular risk.
+
+- Ethnicity: Certain ethnic groups may have a higher predisposition to cardiovascular diseases due to both genetic factors and social determinants of health.
+
+- Socioeconomic Status: Lower socioeconomic status has been linked with higher cardiovascular risk due to factors like limited access to healthcare, higher stress levels, and differences in lifestyle habits.
+
+:::
+
+## Scholarly Articles
+
+### Article 1
+The article "Cardiovascular Risk Prediction" by Donald M. Lloyd-Jones discusses the significant attention that risk prediction has garnered in the cardiovascular literature over the past five years. Risk assessment plays a crucial role in various aspects of cardiovascular disease (CVD) research, including the identification of risk factors, the discovery of new risk markers, the evaluation of potential therapeutic targets, and the cost-effective implementation of preventive measures for both primary and secondary CVD prevention.
+The importance of risk prediction in the field of CVD was underscored by the publication of the Third Report of the National Cholesterol Education Program's Adult Treatment Panel (ATP-III) in 2001, along with similar guidelines from other national and international organizations. These guidelines elevated risk prediction to a central position in the study and management of cardiovascular diseases.
+
+### Article 2
+The study titled "Cardiovascular Risk Prediction in Men and Women Aged Under 50 Years Using Routine Care Data" by Hendrikus J. A. van Os and colleagues aimed to develop prediction models for the risk of first-ever cardiovascular events in individuals aged 30 to 49 years.  Traditional cardiovascular risk prediction models often exclude young adults, and it is known that cardiovascular risk factors vary between men and women.
+
+The researchers analyzed data from a Dutch routine care database, which included individuals without prior cardiovascular disease.  They used Cox proportional hazards models, specific to gender, based on traditional cardiovascular risk factors as reference models.  These were then compared to models using subsets of predictors, including the 20 or 50 most significant predictors identified through the Cox elastic net model regularization coefficients.  The performance of these models was assessed using the C-index and calibration curve slopes over a 10-year follow-up period.  The analyses were further stratified by age groups of 30-39 years and 40-49 years.
+
+The study included 542,141 patients, with an average age of 39.7 years, and 51% were women.  Over the follow-up period, 10,767 cardiovascular events occurred.  The reference models, which included traditional predictors, showed moderate discrimination in both women (C-index 0.648) and men (C-index 0.661).  However, the Cox proportional hazard models incorporating the 50 most important predictors led to a modest increase in the C-index (0.030 for women and 0.012 for men) and a net correct reclassification of 3.7% of events in women and 1.2% in men compared to the reference models.
+
+In conclusion, the study suggests that electronic health record-derived prediction models for first-ever cardiovascular events in individuals under 50 years of age have moderate discriminatory performance. However, the inclusion of nontraditional cardiovascular predictors identified through data-driven methods can slightly improve the predictive performance of these models for both men and women in this age group.
+
+
+Both (@van2023cardiovascular, @lloyd2010cardiovascular) scholarly articles emphasize the need for increased attention and further research into cardiovascular disease, particularly regarding its potential effects and contributing factors. The two datasets [^1][^2] are going to be used in the further research.
+
+[^1]: Prediction of cardiovascular disease risk based on major contributing features
+[^2]: CVD Risk Prediction Synthetic Dataset: 2. fullPatientData.csv - csv file with multiple covariates
+z

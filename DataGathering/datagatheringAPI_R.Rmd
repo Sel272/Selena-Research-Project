@@ -1,0 +1,62 @@
+---
+title: "DSAN5000"
+author: "Selena Yang"
+date: "2023-09-25"
+output: html_document
+---
+
+```{r}
+library(jsonlite)
+library(tidyverse)
+NYTIMES_KEY <- "Hl58Rk7ILb2Zsy2S8nEe3EaUhCiqw4tV"
+```
+
+```{r}
+term <- "Heart+diseases" # Need to use + to string together separate words
+begin_date <- "20000101"
+end_date <- "20201231"
+```
+
+```{}
+baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=",term,
+                  "&begin_date=",begin_date,"&end_date=",end_date,
+                  "&facet_filter=true&api-key=",NYTIMES_KEY, sep="")
+initialQuery <- fromJSON(baseurl)
+maxPages <- round((initialQuery$response$meta$hits[1] / 10)-1) 
+
+pages <- list()
+for(i in 0:9){
+  nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
+  message("Retrieving page ", i)
+  pages[[i+1]] <- nytSearch 
+  Sys.sleep(5) 
+}
+
+```
+
+
+```{}
+
+allNYTSearch <- rbind_pages(pages)
+
+# Visualize coverage by section
+allNYTSearch %>% 
+  group_by(response.docs.type_of_material) %>%
+  summarize(count=n()) %>%
+  mutate(percent = (count / sum(count))*100) %>%
+  ggplot() +
+  geom_bar(aes(y=percent, x=response.docs.type_of_material, fill=response.docs.type_of_material), stat = "identity") + coord_flip() + labs(x="Sources",y="Percentage",title="Records by Sources")+theme(legend.position = "none")
+```
+
+```{}
+allNYTSearch1 = subset(allNYTSearch, select = -c(`response.docs.multimedia`, `response.docs.keywords`,`response.docs.byline.person`))
+```
+
+
+
+```{}
+file_path <- "../../data/00-raw-data/NewYorkTimesAPI.csv"
+write.csv(allNYTSearch1, file = file_path, row.names = FALSE)
+```
+
+

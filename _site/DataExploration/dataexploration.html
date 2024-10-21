@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Research Project - Data Exploration</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../DataExploration/dataexploration.html">Data Exploration</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../Image/georgetown logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../About/About.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Me</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Introduction/Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/Sel272/Selena-Research-Project" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Data/data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../DataGathering/datagathering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Gathering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../DataCleaning/datacleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Cleaning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../DataExploration/dataexploration.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data Exploration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../NaiveBayes/naivebayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naïve Bayes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Clustering/clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../DimensionalityReduction/dimensionalityreduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dimensionality Reduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../DecisionTrees/decisiontrees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Conclusions/conclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusions</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-exploration-for-record-data" id="toc-data-exploration-for-record-data" class="nav-link active" data-scroll-target="#data-exploration-for-record-data">Data Exploration For Record Data</a>
+  <ul class="collapse">
+  <li><a href="#data-understanding" id="toc-data-understanding" class="nav-link" data-scroll-target="#data-understanding">Data Understanding</a></li>
+  <li><a href="#descriptive-statstics" id="toc-descriptive-statstics" class="nav-link" data-scroll-target="#descriptive-statstics">Descriptive Statstics</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
+  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis">Correlation Analysis</a></li>
+  <li><a href="#hypothesis-generation" id="toc-hypothesis-generation" class="nav-link" data-scroll-target="#hypothesis-generation">Hypothesis Generation</a></li>
+  <li><a href="#data-grouping-and-segmentation" id="toc-data-grouping-and-segmentation" class="nav-link" data-scroll-target="#data-grouping-and-segmentation">Data Grouping and Segmentation</a></li>
+  <li><a href="#identifying-outliers" id="toc-identifying-outliers" class="nav-link" data-scroll-target="#identifying-outliers">Identifying Outliers</a></li>
+  <li><a href="#report-and-discuss-your-methods-and-findings" id="toc-report-and-discuss-your-methods-and-findings" class="nav-link" data-scroll-target="#report-and-discuss-your-methods-and-findings">Report and discuss your methods and findings</a></li>
+  <li><a href="#tools-and-software" id="toc-tools-and-software" class="nav-link" data-scroll-target="#tools-and-software">Tools and Software</a></li>
+  </ul></li>
+  <li><a href="#data-exploration-for-text-data" id="toc-data-exploration-for-text-data" class="nav-link" data-scroll-target="#data-exploration-for-text-data">Data Exploration For Text Data</a>
+  <ul class="collapse">
+  <li><a href="#data-understanding-1" id="toc-data-understanding-1" class="nav-link" data-scroll-target="#data-understanding-1">Data Understanding</a></li>
+  <li><a href="#data-visualization-1" id="toc-data-visualization-1" class="nav-link" data-scroll-target="#data-visualization-1">Data Visualization</a></li>
+  <li><a href="#report-and-discuss-your-methods-and-findings-1" id="toc-report-and-discuss-your-methods-and-findings-1" class="nav-link" data-scroll-target="#report-and-discuss-your-methods-and-findings-1">Report and discuss your methods and findings</a></li>
+  <li><a href="#tools-and-software-1" id="toc-tools-and-software-1" class="nav-link" data-scroll-target="#tools-and-software-1">Tools and Software</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Exploration</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="data-exploration-for-record-data" class="level1">
+<h1>Data Exploration For Record Data</h1>
+<section id="data-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="data-understanding">Data Understanding</h2>
+<p>Data understanding is a fundamental and critical step in the field of data science and analytics. It serves as the foundation upon which all subsequent data-related activities are built. This process involves the exploration, examination, and comprehension of the data at hand, enabling organizations and individuals to derive valuable insights, make informed decisions, and solve complex problems. Moreover, data understanding allows us to uncover patterns, trends, and relationships.</p>
+<p>The original dataset comprises 70,000 patient records, containing 11 predictive variables (features) and 1 response variable (target). Body Mass Index (BMI) has been included in the dataset due to its significance as a factor that can be used to estimate an individual’s body fat and, by extension, assess their health in relation to their weight. It serves as a valuable tool for quickly evaluating health risks associated with weight. Therefore, we now have 12 features.</p>
+<ol class="example" type="1">
+<li>Age | Objective Feature | age | int (days)</li>
+<li>Height | Objective Feature | height | int (cm) |</li>
+<li>Weight | Objective Feature | weight | float (kg) |</li>
+<li>Gender | Objective Feature | gender | categorical code |</li>
+<li>Systolic blood pressure | Examination Feature | ap_hi | int |</li>
+<li>Diastolic blood pressure | Examination Feature | ap_lo | int |</li>
+<li>Cholesterol | Examination Feature | cholesterol | 1: normal, 2: above normal, 3: well above normal |</li>
+<li>Glucose | Examination Feature | gluc | 1: normal, 2: above normal, 3: well above normal |</li>
+<li>Smoking | Subjective Feature | smoke | binary |</li>
+<li>Alcohol intake | Subjective Feature | alco | binary |</li>
+<li>Physical activity | Subjective Feature | active | binary |</li>
+<li>Body Mass Index | Objective Feature | bmi | float (kg/m²)|</li>
+<li>Presence or absence of cardiovascular disease | Target Variable | cardio | binary |</li>
+</ol>
+<p>The problem I am addressing involves understanding the potential risk factors associated with cardiovascular diseases.</p>
+<p>In the dataset, there are six numerical features: Age, Height, Weight, Systolic blood pressure (ap_hi), Diastolic blood pressure (ap_lo), and Body Mass Index (BMI). Additionally, there are seven categorical features: Gender, Cholesterol, Glucose, Smoking, Alcohol intake, Physical activity, and the presence or absence of cardiovascular disease (the Target Variable).</p>
+<p>Identifying potential relationships and their relevance to the project’s objectives is a crucial step in data analysis and modeling. These relationships will be explored through visualization methods, such as correlation matrices, histograms, scatterplots, etc.</p>
+<div id="09dc1a14" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas  <span class="im">as</span>  pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>cardio <span class="op">=</span> pd.read_csv(<span class="st">'../Data/01-modified-data/cardio.csv'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>cardio[<span class="st">'bmi'</span>] <span class="op">=</span> <span class="bu">round</span>(cardio[<span class="st">'weight'</span>] <span class="op">/</span> ((cardio[<span class="st">'height'</span>]<span class="op">/</span><span class="dv">100</span>) <span class="op">**</span> <span class="dv">2</span>),<span class="dv">2</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>cardio.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">ap_hi</th>
+<th data-quarto-table-cell-role="th">ap_lo</th>
+<th data-quarto-table-cell-role="th">cholesterol</th>
+<th data-quarto-table-cell-role="th">gluc</th>
+<th data-quarto-table-cell-role="th">smoke</th>
+<th data-quarto-table-cell-role="th">alco</th>
+<th data-quarto-table-cell-role="th">active</th>
+<th data-quarto-table-cell-role="th">cardio</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>50</td>
+<td>2</td>
+<td>168</td>
+<td>62</td>
+<td>110</td>
+<td>80</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>21.97</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>55</td>
+<td>1</td>
+<td>156</td>
+<td>85</td>
+<td>140</td>
+<td>90</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>34.93</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>52</td>
+<td>1</td>
+<td>165</td>
+<td>64</td>
+<td>130</td>
+<td>70</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>23.51</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>48</td>
+<td>2</td>
+<td>169</td>
+<td>82</td>
+<td>150</td>
+<td>100</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>28.71</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>48</td>
+<td>1</td>
+<td>156</td>
+<td>56</td>
+<td>100</td>
+<td>60</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>23.01</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="descriptive-statstics" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statstics">Descriptive Statstics</h2>
+<p>Descriptive statistics serve as a fundamental tool for understanding and summarizing data, offering valuable insights into the characteristics of a dataset. In this analysis, the focus is on both numerical and categorical variables, each demanding specific methods to reveal crucial details.</p>
+<p>The statistical summary report for numerical variables:</p>
+<div id="7ff625c6" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas  <span class="im">as</span>  pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>cardio <span class="op">=</span> pd.read_csv(<span class="st">'../Data/01-modified-data/cardio.csv'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>cardio[<span class="st">'bmi'</span>] <span class="op">=</span> <span class="bu">round</span>(cardio[<span class="st">'weight'</span>] <span class="op">/</span> ((cardio[<span class="st">'height'</span>]<span class="op">/</span><span class="dv">100</span>) <span class="op">**</span> <span class="dv">2</span>),<span class="dv">2</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>cardio.head()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Select numerical columns</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>numerical_cols <span class="op">=</span> [<span class="st">"age"</span>, <span class="st">"height"</span>, <span class="st">"weight"</span>, <span class="st">"ap_hi"</span>, <span class="st">"ap_lo"</span>, <span class="st">"bmi"</span>]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> {</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Mean'</span>: cardio[numerical_cols].mean(),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Median'</span>: cardio[numerical_cols].median(),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Mode'</span>: cardio[numerical_cols].mode().iloc[<span class="dv">0</span>],</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Standard Deviation'</span>: cardio[numerical_cols].std(),</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Variance'</span>: cardio[numerical_cols].var()</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>stats_df <span class="op">=</span> pd.DataFrame(stats)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Mean   Median    Mode  Standard Deviation      Variance
+age      53.338686   54.000   56.00            6.765294     45.769203
+height  164.359229  165.000  165.00            8.210126     67.406175
+weight   74.205543   72.000   65.00           14.395829    207.239884
+ap_hi   128.817286  120.000  120.00          154.011419  23719.517323
+ap_lo    96.630414   80.000   80.00          188.472530  35521.894676
+bmi      27.556502   26.375   23.88            6.091795     37.109965</code></pre>
+</div>
+</div>
+<div>
+
+</div>
+<div id="Basic_Summary_Statistics" class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/numerical_mean.png" class="img-fluid figure-img"></p>
+<figcaption>Mean</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/numerical_median.png" class="img-fluid figure-img"></p>
+<figcaption>Median</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/numerical_mode.png" class="img-fluid figure-img"></p>
+<figcaption>Mode</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/numerical_std.png" class="img-fluid figure-img"></p>
+<figcaption>Standard Deviation</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/numerical_variance.png" class="img-fluid figure-img"></p>
+<figcaption>Variance</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>For categorical variables, frequency distributions and bar charts are used to visualize data distribution:</p>
+<div id="faaec723" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas  <span class="im">as</span>  pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>cardio <span class="op">=</span> pd.read_csv(<span class="st">'../Data/01-modified-data/cardio.csv'</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>cardio[<span class="st">'bmi'</span>] <span class="op">=</span> <span class="bu">round</span>(cardio[<span class="st">'weight'</span>] <span class="op">/</span> ((cardio[<span class="st">'height'</span>]<span class="op">/</span><span class="dv">100</span>) <span class="op">**</span> <span class="dv">2</span>),<span class="dv">2</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>cardio.head()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>categorical_vars <span class="op">=</span> [<span class="st">"gender"</span>, <span class="st">"cholesterol"</span>, <span class="st">"gluc"</span>, <span class="st">"smoke"</span>, <span class="st">"alco"</span>, <span class="st">"active"</span>, <span class="st">"cardio"</span>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> var <span class="kw">in</span> categorical_vars:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Frequency distribution for </span><span class="sc">{</span>var<span class="sc">}</span><span class="ss">:</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(cardio[var].value_counts())</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">50</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Frequency distribution for gender:
+
+gender
+1    45530
+2    24470
+Name: count, dtype: int64
+
+==================================================
+
+Frequency distribution for cholesterol:
+
+cholesterol
+1    52385
+2     9549
+3     8066
+Name: count, dtype: int64
+
+==================================================
+
+Frequency distribution for gluc:
+
+gluc
+1    59479
+3     5331
+2     5190
+Name: count, dtype: int64
+
+==================================================
+
+Frequency distribution for smoke:
+
+smoke
+0    63831
+1     6169
+Name: count, dtype: int64
+
+==================================================
+
+Frequency distribution for alco:
+
+alco
+0    66236
+1     3764
+Name: count, dtype: int64
+
+==================================================
+
+Frequency distribution for active:
+
+active
+1    56261
+0    13739
+Name: count, dtype: int64
+
+==================================================
+
+Frequency distribution for cardio:
+
+cardio
+0    35021
+1    34979
+Name: count, dtype: int64
+
+==================================================
+</code></pre>
+</div>
+</div>
+<div>
+
+</div>
+<div id="Barcharts_Categorical_Variable" class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/barchart_gender.png" class="img-fluid figure-img"></p>
+<figcaption>Gender</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/barchart_cholesterol.png" class="img-fluid figure-img"></p>
+<figcaption>Cholesterol</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/barchart_gluc.png" class="img-fluid figure-img"></p>
+<figcaption>Gluc</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/barchart_smoke.png" class="img-fluid figure-img"></p>
+<figcaption>Smoke</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/barchart_alco.png" class="img-fluid figure-img"></p>
+<figcaption>Alco</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/barchart_active.png" class="img-fluid figure-img"></p>
+<figcaption>Active</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/barchart_cardio.png" class="img-fluid figure-img"></p>
+<figcaption>Cardio</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
+<p>Visualizations, such as histograms, box plots, scatter plots, and heatmaps, serve as invaluable tools for unveiling data’s distribution, identifying relationships between variables, and detecting potential trends. These graphical representations simplify complex data, offering a clear and efficient means of interpretation, ultimately enhancing our ability to understand and leverage the insights hidden within the dataset.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/densityplot_age.png" class="img-fluid figure-img"></p>
+<figcaption>Age</figcaption>
+</figure>
+</div>
+<p>A. The density plot for age suggests that a higher age of an individual is likely to be associated with cardiovascular dieases.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/densityplot_weight.png" class="img-fluid figure-img"></p>
+<figcaption>Weight</figcaption>
+</figure>
+</div>
+<p>B. From the weight density plot in relation to cardio, the density curve for those with cardiovascular diseases is higher than that for those without, particularly for individuals with larger weights. This suggests that individuals with higher weights are more likely to have cardiovascular diseases.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/densityplot_height.png" class="img-fluid figure-img"></p>
+<figcaption>(i) Height</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/densityplot_height_gender.png" class="img-fluid figure-img"></p>
+<figcaption>(ii) Height</figcaption>
+</figure>
+</div>
+<p>C. (i) The first density plot indicates there is rarely an assciation between height and cardiovasucler dieases. (ii) The second density plot tells there is a relationsip between gender and height, but such variance does not result in any different on the response variable cardio.</p>
+</section>
+<section id="correlation-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-analysis">Correlation Analysis</h2>
+<p>Examining the correlations between variables with correlation matrices provides a better understanding of the relationships within the data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/correlation_matrix.png" class="img-fluid figure-img"></p>
+<figcaption>Correlation Matrix</figcaption>
+</figure>
+</div>
+<p>Based on the correlation matrix, there is a relatively higher correlation between ‘height’ and ‘gender’, ‘gluc’ and ‘cholesterol’, and ‘alco’ and ‘smoke’.</p>
+<p>Examining our response variable, ‘cardio’, we find that the variables with the highest correlations are ‘age’ (0.24), ‘weight’ (0.18), ‘cholesterol’ (0.22), and ‘bmi’ (0.17). These variables could be crucial features during the model training process.</p>
+</section>
+<section id="hypothesis-generation" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-generation">Hypothesis Generation</h2>
+<ol type="1">
+<li>Q1 Age: How old are you? (Cardiovascular risk generally increases with age.)</li>
+</ol>
+<p>Answer: Age is a key factor in predicting cardiovascular diseases. Observing the age density plot, we see that a higher age tends to be associated with a higher probability of cardiovascular diseases.</p>
+<ol start="2" type="1">
+<li>Q2 Gender: Are you male or female? (Certain risk factors may vary by gender.)</li>
+</ol>
+<p>Answer: Gender doesn’t seem to be a significant feature. There’s scarcely any difference in cardiovascular disease rates between males and females.</p>
+<ol start="3" type="1">
+<li>Q3 Family History: Does your family have a history of heart disease or related conditions?</li>
+</ol>
+<p>Answer: It’s challenging to find datasets with family history, primarily due to the vast variations in individual family histories and the availability of such data.</p>
+<ol start="4" type="1">
+<li>Q4 Smoking: Do you currently smoke, or have you ever smoked in the past?</li>
+</ol>
+<p>Answer: Based on the correlation matrix, smoking doesn’t appear to be an important feature in the current Exploratory Data Analysis (EDA) results.</p>
+<ol start="5" type="1">
+<li>Q5 Physical Activity: How often do you engage in physical activity or exercise?</li>
+</ol>
+<p>Answer: Physical activity is a feature in the dataset. Based on the correlation matrix, its correlation with other variables is almost zero. Given its binary nature, it’s a more subjective feature, making it challenging to incorporate into the model-building process.</p>
+<ol start="6" type="1">
+<li>Q6 Diet: What is your typical diet like? (Consider factors like consumption of fruits, vegetables, and processed foods.)</li>
+</ol>
+<p>Answer: Diet isn’t a feature in our dataset. Given that it’s likely a categorical variable with numerous levels, its utility in the model-building process remains uncertain.</p>
+<ol start="7" type="1">
+<li>Q7 Blood Pressure: What is your current blood pressure, and have you been diagnosed with hypertension (high blood pressure)?</li>
+</ol>
+<p>Answer: Our dataset includes systolic blood pressure (ap_hi) and diastolic blood pressure (ap_lo). However, they don’t seem to be significant cardiovascular risk factors based on our EDA results.</p>
+<ol start="8" type="1">
+<li>Q8 Cholesterol Levels: Do you know your cholesterol levels, including LDL (low-density lipoprotein) and HDL (high-density lipoprotein) cholesterol? Q10 Weight and Body Mass Index (BMI): What is your current weight, and do you know your BMI? (Obesity is a significant cardiovascular risk factor.)</li>
+</ol>
+<p>Answer: BMI and Cholesterol Levels exhibit a higher correlation with our response variable, cardio. They are significant cardiovascular risk factors.</p>
+</section>
+<section id="data-grouping-and-segmentation" class="level2">
+<h2 class="anchored" data-anchor-id="data-grouping-and-segmentation">Data Grouping and Segmentation</h2>
+<p>Given the nature of the independent features and the low dimensionality of the levels for all categorical variables, no data grouping or segmentation has been performed on the dataset.</p>
+<p>The sole additional column introduced is “bmi”, which more effectively represents the relationship between weight and height. It seems to be a crucial factor during the model training process.</p>
+</section>
+<section id="identifying-outliers" class="level2">
+<h2 class="anchored" data-anchor-id="identifying-outliers">Identifying Outliers</h2>
+<p>I used the 3-Sigma rule to identify outliers. Any data record that falls outside the range of mean plus or minus 3 standard deviations is defined as an outlier. I removed those data points and recalculated the 3-Sigma range. This process was repeated until no outliers were detected.</p>
+<p>The following graph depicts the distributions before cleaning.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/outlier_before.png" class="img-fluid figure-img"></p>
+<figcaption>Outlier Before</figcaption>
+</figure>
+</div>
+<p>It’s evident that there are numerous outliers for ap_hi, ap_lo, and bmi, where the values are significantly outside the standard range. For other variables, like weight and height, there are also some values that defy common sense. For age, we opted to retain the lower age variables, even though they are considered outliers based on the 3-Sigma rule. The subsequent visuals illustrate the distributions post-cleaning.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA/outlier_after.png" class="img-fluid figure-img"></p>
+<figcaption>Outlier After</figcaption>
+</figure>
+</div>
+<p>No outliers were detected using the 3-Sigma rule, and all the distributions appear reasonable.</p>
+</section>
+<section id="report-and-discuss-your-methods-and-findings" class="level2">
+<h2 class="anchored" data-anchor-id="report-and-discuss-your-methods-and-findings">Report and discuss your methods and findings</h2>
+<p>From the correlation matrix, we can identify the key features predicting cardiovascular diseases, which include ‘age,’ ‘weight,’ ‘cholesterol,’ and ‘bmi.’ These are the potential variables that will be selected during the feature selection process. However, due to the low number of features in this dataset, all the features will be considered in the future modeling processes.</p>
+<p>All the exploratory data analysis (EDA) results align with our expectations. I am able to answer my research questions and generate hypotheses based on the relationships between different variables and the response variable ‘cardio.’ The patterns presented in the analysis are reasonable and make sense in the real world.</p>
+<p>One of the advantages of this dataset is the large number of data records. After the outlier cleaning steps, we still have more than 60,000 records in the dataset. This ensures that the model has sufficient data for training and learning.</p>
+</section>
+<section id="tools-and-software" class="level2">
+<h2 class="anchored" data-anchor-id="tools-and-software">Tools and Software</h2>
+<p>All the codes were complied in python using ipynb file. The detailed code is also saved online in the following location.</p>
+<p><a href="https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/DataExploration/data_exploration.ipynb" class="uri">https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/DataExploration/data_exploration.ipynb</a></p>
+</section>
+</section>
+<section id="data-exploration-for-text-data" class="level1">
+<h1>Data Exploration For Text Data</h1>
+<section id="data-understanding-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-understanding-1">Data Understanding</h2>
+<p>For text data, I used the News API to retrieve text data from the server. I identified four topics: ‘Cardiovascular,’ ‘Cancer,’ ‘Stroke,’ and ‘Diabetes.’ All the text data retrieved using the ‘Cardiovascular’ topic is labeled with ‘1,’ indicating its relevance to our research goals, while data from the other topics is labeled as ‘0.’</p>
+<p>The dataset consists of 400 records with 2 columns. One column contains the text data retrieved using the News API, and the other column contains the labels as described above. Additionally, I removed stopwords to enhance the text data modeling training process, allowing the algorithm to focus more on content words rather than function words. Below is a screenshot of the text data obtained.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA_text/Text_Data.png" class="img-fluid figure-img" width="600"></p>
+<figcaption>Text Data</figcaption>
+</figure>
+</div>
+</section>
+<section id="data-visualization-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization-1">Data Visualization</h2>
+<p>For the text data, I created two word clouds to visualize the high-frequency words in the ‘Cardiovascular’ topic and the other topics. I also generated word frequency charts to delve into further details.</p>
+<p>There are no significant differences between the words across different topics, except for the topic words themselves. Additionally, the word frequency chart includes many Spanish words, making it challenging to identify any meaningful patterns.</p>
+<div>
+
+</div>
+<div id="Wordcloud" class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA_text/Wordcloud1.png" class="img-fluid figure-img"></p>
+<figcaption>Cardio-Related</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA_text/Wordcloud2.png" class="img-fluid figure-img"></p>
+<figcaption>Non Cardio-Related</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div id="WordFrequency" class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA_text/WordFreq1.png" class="img-fluid figure-img"></p>
+<figcaption>Cardio-Related</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Image/EDA_text/WordFreq2.png" class="img-fluid figure-img"></p>
+<figcaption>Non Cardio-Related</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="report-and-discuss-your-methods-and-findings-1" class="level2">
+<h2 class="anchored" data-anchor-id="report-and-discuss-your-methods-and-findings-1">Report and discuss your methods and findings</h2>
+<p>In summary, when compared to record data, visualizing and identifying useful patterns in text data is much more challenging due to its unstructured nature. In the Naive Bayes process, we will explore the text data further to determine if we can gain better insights through modeling, training, and prediction results.</p>
+</section>
+<section id="tools-and-software-1" class="level2">
+<h2 class="anchored" data-anchor-id="tools-and-software-1">Tools and Software</h2>
+<p>All the codes were complied in python using ipynb file.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

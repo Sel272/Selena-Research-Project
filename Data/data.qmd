@@ -1,0 +1,11 @@
+---
+title: "Data"
+---
+
+Data is stored in the GitHub repository：<https://github.com/Sel272/Selena-Research-Project> 🩵 
+
+![(Heart Attack Cartoon)
+source: https://www.nhlbi.nih.gov/health-topics/education-and-awareness/heart-month/animated-gifs](../Image/NHLBI%20Signs%20of%20A%20Heart%20Attack.gif)
+
+![(Heart Stress Cartoon)
+source: https://www.nhlbi.nih.gov/health-topics/education-and-awareness/heart-month/animated-gifs ](../Image/HEART_STRESS_NHLBI_FINAL_Jan22.gif)

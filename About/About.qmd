@@ -1,0 +1,67 @@
+---
+title: "About Me"
+---
+
+
+
+![](../Image/%20profile.png){fig-align="left" width=30%}
+
+
+Hi. My name is Xuening(Selena) Yang. I am a recent graduate of George Washington University, where I earned an bachelor degree in Business and Business Analytics with a minor in Statistics. Now, I'm starting an exciting academic journey as a master's degree in data science and analytics at Georgetown University. My passion for data-driven decision making and desire to excel in the business world led me down this path. I have also been fortunate to broaden my horizons through the University of Edinburgh's rich exchange programme, exposing me to different cultures and global perspectives. Outside of the classroom, I am an avid traveler, constantly seeking new adventures and cultural experiences. Traveling not only fueled my curiosity, but also enhanced my resilience and critical thinking skills, which are invaluable assets in the ever-growing field of data science and analytics. With my background and current academic pursuits, I am ready to take on the challenge and make a meaningful contribution to this dynamic and exciting field.
+
+## Educations
+- Georgetown University | August 2023 ~ May 2025
+- University of Edinburgh | January 2023 ~ May 2023
+- George Washington University | August 2019 ~ May 2023
+
+## Professional Eexperience
+1. Choice Hotels International, Data Science Intern | North Bethesda, MD
+- Utilized SQL to query an internal database, performing complex aggregations and joins to transform data from 15+ million observations at the guest level to 5k observations at the property level for analysis 
+- Designed 20+ interactive data visualizations, including scatterplots, heat maps, and geospatial maps of hotel locations, using Python in AWS SageMaker to analyze variable relationships and distributions
+- Performed data wrangling and conducted Ridge and Lasso Regression model, optimizing dimensionality reduction and elevating R-squared by 0.2 while preserving feature clarity
+- Built an Ordinary Least Squares model to quantify the relationship between hotel satisfaction results and repeat guest stay rates, leveraging the results to analyze potential ROI using key strategic levers
+- Presented strategic recommendations on hotel booking channels and guest satisfaction, influencing executive decisions and driving a potential $1 million revenue increase
+
+
+2. Mobalytics, Gaming Market Research and Data Analytics Remote Externship | California, US
+- Conducted in-depth competitor analysis on 1,000+ companies, creating mind maps, issue trees, and SWOT analyses to deliver strategic improvement recommendations
+- Transformed raw data into actionable insights using R and Excel, through statistical analysis and regression modeling
+- Synthesized historical data and market trends to present actionable business strategies and data insights to program management teams, driving strategic initiatives
+ 
+
+3. China Galaxy Securities Co., Ltd. Beijing Branch, Investment Banking Division Intern | Beijing, China
+- Analyze listed corporations refinancing situations of Beijing’s Xicheng and Fengtai Districts, sorted out financial bonds of Xicheng District, including number of issuers and annual number of issues.
+- Investigated the status quo of steel industry and participated in its development cycle and forecasted the saturation point of steel production in China.
+- Assisted in modifying the equity financing plan for base construction of Fengtai District in Beijing.
+
+## Acadmeic Projects
+1. Data Science Portfolio Project: A Narrative Website, GU URL: <https://sely27.georgetown.domains/Research_Project> | Washington, DC
+
+- Designed and launched a comprehensive 13-tab Quarto-based website, effectively narrating a data science project on Cardiovascular Risk, with seamlessly integrated code and hosting on GitHub to enhance accessibility
+- Processed and analyzed large datasets of 60,000+ records in Python, visualizing key insights using Seaborn plots to effectively communicate outcomes
+- Implemented supervised machine learning models in Python and R, including Naïve Bayes, Decision Trees, Random Forest, and selected models based on accuracy, precision and recall scores
+- Optimized model performance by fine-tuning hyperparameters and addressed potential overfitting concerns using learning curves, resulting in a final test accuracy of up to 85%
+
+2. Sarcasm Detection and Translation Model, Natural Language Processing Project in Python, Github: <https://github.com/Sel272/Sarcasm-Detection-and-Translation-Model> | Washington, DC
+
+- Developed a Python-based Sarcasm Detection Model using Object-Oriented Programming (OOP), incorporating 10
+functions from 3 built classes, capable of accurately identifying sarcastic text and translating it into genuine meaning
+- Leveraged advanced machine learning techniques, including Logistic Regression, Naïve Bayes, LSTM, and Random
+Forests, to enhance sarcasm prediction accuracy to 87%
+- Implemented a Sarcasm Translation Model employing NLTK package’s sentiment analysis, part-of-speech (POS)
+tagging, and an antonym word bank to effectively convert sarcastic text into its literal interpretation
+
+3. Capstone Project - Verituity, Graduate-Level Group Project | Washington, DC
+
+- Optimized LinkedIn’s digital advertising effectiveness by implementing targeted A/B testing strategies
+- Reduced advertising fatigue by developing predictive machine learning models that forecasted creative wear-out,
+enabling timely content refreshes and maintaining audience engagement at key stages of the sales cycle
+- Engineered a streamlined ETL protocol to enhance B2B ad performance by integrating LinkedIn ROI metrics and
+Google Analytics
+
+## Skills
+
+- Technical Tools: Python, R, MATLAB, SAS, SAS Viya, Tableau, Quarto, Google Analytics, MS Office, SQL, AWS SageMaker, GitHub, Bitbucket, Spark
+- Language: Native in Mandarin, Fluent in English, Basic in French
+
+

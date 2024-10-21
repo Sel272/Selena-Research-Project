@@ -1,0 +1,67 @@
+---
+title: "Data Cleaning"
+---
+## Why is Data Cleaning Necessary?
+
+Data cleaning is an essential step in the data analysis process, vital for ensuring the accuracy and reliability of conclusions derived from the data. It entails the meticulous task of correcting or removing data that is erroneous, corrupted, incomplete, or irrelevant. This process is especially critical in handling large datasets, which often originate from various sources and are prone to a range of inconsistencies, including duplicate records, misaligned formats, or missing values.
+
+The importance of clean data cannot be overstated, as it is fundamental to making informed decisions. Inaccurate data can lead to erroneous conclusions, significantly impacting the outcome of an analysis. This is particularly crucial for machine learning models, which depend heavily on the quality of their input data for reliable predictions and analysis.
+
+Moreover, data cleaning plays a critical role in identifying and addressing potential issues within the dataset, enabling a more profound understanding of the underlying patterns and trends. These might otherwise remain hidden amidst the noise inherent in unclean data. In summary, data cleaning is not just a preparatory step but a crucial aspect of the data analysis process, underpinning the integrity and usefulness of the resulting insights.
+
+## 1. Data Cleaning for cardio_train.xlsx
+
+::: {.callout-note icon=false}
+
+## Links
+
+* Raw Data: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/Data/00-raw-data/cardio_train.xlsx>.
+* Cleaned Data: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/Data/01-modified-data/cardio.csv>.
+* Code: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/DataCleaning/Cardio1.Rmd>.
+
+:::
+
+In the process of preparing our dataset for analysis, we observed the following:
+
+(@) No Missing Values: The dataset was meticulously examined for any missing or 'NA' values. We can confidently confirm the absence of such values, making it seamless for further analytical processes.
+
+(@) Categorical to Numerical Transformation: One essential step in data preprocessing, especially for machine learning models, is the conversion of categorical data into a numerical format. In our case, this transformation was already accomplished. Every categorical variable in our dataset has been effectively converted to a numerical representation, ensuring compatibility with most analytical tools and algorithms.
+
+    * One of the columns I manipulated is the “age” column. Originally, the “age” column was measured in days. I divided the values in this column by 365 to convert them from days to years.
+
+(@) Cleanliness: Drawing the dataset from Kaggle, a platform renowned for its comprehensive datasets, we benefited from the intrinsic cleanliness of the data. The dataset required no additional cleaning, modification, or transformation, making it ready for immediate analysis.
+
+(@) Outlier Detection: In the traditional data cleaning process, identifying and cleaning outliers is usually conducted as part of data cleaning. However, in the workflow of this project, this step was carried out during the Data Exploration section. For more details and visualizations, please refer to that section. Below is a quick summary of the outlier detection performed. "I used the 3-Sigma rule to identify outliers. Any data record that falls outside the range of mean plus or minus 3 standard deviations is defined as an outlier. I removed those data points and recalculated the 3-Sigma range. This process was repeated until no outliers were detected. By visualization, It’s evident that there are numerous outliers for ap_hi, ap_lo, and bmi, where the values are significantly outside the standard range. For other variables, like weight and height, there are also some values that defy common sense. For age, we opted to retain the lower age variables, even though they are considered outliers based on the 3-Sigma rule."
+
+In summary, the dataset's pristine condition significantly simplifies the preprocessing phase, allowing us to proceed directly to exploratory data analysis or modeling without additional data wrangling steps. Upon examining the correlation matrix for all the variables, cholesterol, age, and weight seem to have a moderately strong correlational relationship with my target variable, 'cardio'.
+
+![Correlation Matrix](../Image/corr_matrix.png)
+
+## 2. Data Cleaning for API Using Python & R
+
+::: {.callout-note icon=false}
+
+## Links
+
+* Python
+    * Raw Data: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/Data/00-raw-data/cardiorisk.csv>.
+    * Cleaned Data: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/Data/01-modified-data/cardioriskapi.csv>.
+    * Code: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/DataCleaning/datacleaning_python.ipynb>.
+
+* R
+    * Raw Data: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/Data/00-raw-data/NewYorkTimesAPI.csv>.
+    * Cleaned Data: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/Data/01-modified-data/NewYorkTimesAPI.csv>.
+    * Code: <https://github.com/anly501/dsan-5000-project-Sel272/blob/main/DSAN5000project/DataCleaning/datagcleaningAPI_R.Rmd>.
+
+::: 
+
+To clean and preprocess data using Python, start by creating a datacleaning_python and datacleaningAPI_R file. Within this script, load your dataset into a pandas DataFrame, standardize column names to lowercase and replace spaces with underscores for uniformity. If the data includes text columns, use the CountVectorizer from scikit-learn to convert this text into numerical format. Finally, save the cleaned and transformed data back to a CSV file, ensuring it's primed for subsequent analysis or modeling. 
+
+* Python API Word Frequency in Text Description
+
+![description_freq](../Image/description_freq.png)
+
+* Python API Word Frequency in Text Title
+
+![title_freq](../Image/title_freq.png)
+
